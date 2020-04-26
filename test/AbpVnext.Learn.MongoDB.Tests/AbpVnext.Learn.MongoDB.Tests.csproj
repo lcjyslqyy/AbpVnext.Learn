@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>AbpVnext.Learn</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" />
+    <PackageReference Include="Mongo2Go" Version="2.2.12" />
+    <ProjectReference Include="..\..\src\AbpVnext.Learn.MongoDB\AbpVnext.Learn.MongoDB.csproj" />
+    <ProjectReference Include="..\AbpVnext.Learn.TestBase\AbpVnext.Learn.TestBase.csproj" />
+  </ItemGroup>
+
+</Project>

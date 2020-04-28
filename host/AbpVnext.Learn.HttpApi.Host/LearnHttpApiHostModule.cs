@@ -22,6 +22,12 @@ using Volo.Abp.Modularity;
 using Volo.Abp.MultiTenancy;
 using Volo.Abp.Security.Claims;
 using Volo.Abp.VirtualFileSystem;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Http;
+using System.Threading.Tasks;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.Extensions.Configuration;
 
 namespace AbpVnext.Learn
 {
@@ -75,7 +81,6 @@ namespace AbpVnext.Learn
 
 
 
-            context.Services.AddAuthentication("Bearer");
                 
             // Redis暂时注释
             //context.Services.AddStackExchangeRedisCache(options =>

@@ -6,8 +6,6 @@ namespace AbpVnext.Learn.IAppServices
 {
     public interface IUserAppServices : IApplicationService
     {
-        Task<UserDto> get_userbyuserid(Guid userid);
-        Task<UserDto> get_userbyuserid1(Guid userid);
-        Task<object> insert();
+        Task<UserDto> LoginByUserPhoneAndPwd(string user_phone, string pass_word);
     }
 }

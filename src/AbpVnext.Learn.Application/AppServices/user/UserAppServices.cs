@@ -1,4 +1,5 @@
 ﻿using AbpVnext.Learn.Dtos.user;
+using AbpVnext.Learn.Entitys;
 using AbpVnext.Learn.IAppServices;
 using AbpVnext.Learn.IRepository;
 using System;
@@ -16,6 +17,11 @@ namespace AbpVnext.Learn.AppServices
             IUserRepository repository)
         {
             _repository = repository;
+        }
+        public async Task<UserDto> LoginByUserPhoneAndPwd(string user_phone,string pass_word)
+        {
+            var user= await _repository.GetAsync(a=>a.user_phone== user_phone&&a.pass_word== pass_word&&a.user_status==0);
+            return ObjectMapper.Map<User, UserDto>(user);
         }
         public async Task<UserDto> get_userbyuserid(Guid userid)
         {

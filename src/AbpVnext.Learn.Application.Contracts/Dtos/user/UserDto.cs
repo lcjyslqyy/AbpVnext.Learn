@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Volo.Abp.Application.Dtos;
 
 namespace AbpVnext.Learn.Dtos.user
 {
-    public class UserDto
+    public class UserDto: EntityDto<Guid>
     {
         /// <summary>
         /// 用户名称
@@ -14,6 +15,10 @@ namespace AbpVnext.Learn.Dtos.user
         /// 用户手机号
         /// </summary>
         public string user_phone { get; set; }
+        /// <summary>
+        /// 用户状态
+        /// </summary>
+        public int user_status { get; set; }
 
     }
 }

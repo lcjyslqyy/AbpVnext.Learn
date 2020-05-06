@@ -12,6 +12,9 @@ namespace AbpVnext.Learn
             msg = _msg;
             data = _data;
         }
+        /// <summary>
+        /// 0为成功，其它为失败
+        /// </summary>
         public int code  { get; set; }
         public string msg { get; set; }
         public object data { get; set; }

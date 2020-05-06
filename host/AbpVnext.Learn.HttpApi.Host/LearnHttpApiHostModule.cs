@@ -28,6 +28,9 @@ using System.Threading.Tasks;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Mvc;
+using Volo.Abp.AspNetCore.Mvc.ExceptionHandling;
+using AbpVnext.Learn.Base.Filters;
 
 namespace AbpVnext.Learn
 {
@@ -113,6 +116,14 @@ namespace AbpVnext.Learn
                         .AllowAnyMethod()
                         .AllowCredentials();
                 });
+            });
+
+            Configure<MvcOptions>(options =>
+            {
+                var index = options.Filters.ToList().FindIndex(filter => filter is ServiceFilterAttribute attr && attr.ServiceType.Equals(typeof(AbpExceptionFilter)));
+                if (index > -1)
+                    options.Filters.RemoveAt(index);
+                options.Filters.Add(typeof(LeanGlobalExceptionFilter));
             });
         }
 

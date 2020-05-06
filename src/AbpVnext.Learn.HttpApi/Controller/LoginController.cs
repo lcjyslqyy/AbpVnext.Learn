@@ -23,12 +23,14 @@ namespace AbpVnext.Learn.Controller
             _userAppServices = userAppServices;
             _configuration = configuration;
         }
+        #region 折叠
+        
         [HttpPost]
         [Route("logout")]
         //退出登录
-        [Authorize]
         public async Task<int> Logout()
         {
+            int ssss = int.Parse("aaaaa");
             return 0;
         }
         [HttpPost]
@@ -48,5 +50,7 @@ namespace AbpVnext.Learn.Controller
             var securityToken = new JwtSecurityToken(_configuration.GetValue<string>("JwtAuth:Issuer"), _configuration.GetValue<string>("JwtAuth:Audience"), claims, dtCreation, dtExpiration, credentials);          
             return new ResultModel(0,"",new { token = handler.WriteToken(securityToken) });
         }
+
+        #endregion
     }
 }

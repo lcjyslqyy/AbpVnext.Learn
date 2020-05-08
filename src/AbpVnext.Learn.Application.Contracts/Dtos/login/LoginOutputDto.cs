@@ -2,17 +2,16 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace AbpVnext.Learn.Dtos.user
+namespace AbpVnext.Learn.Dtos.login
 {
     /// <summary>
-    /// 获取用户信息的dto
+    /// 登录接口出参dto
     /// </summary>
-    public class GetUserDto
+    public class LoginOutputDto
     {
         /// <summary>
-        /// 用户id
+        /// token
         /// </summary>
-        public Guid userid { get; set; }
-        
+         public string token { get; set; }
     }
 }

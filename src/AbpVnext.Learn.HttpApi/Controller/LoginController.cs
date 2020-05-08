@@ -1,4 +1,5 @@
-﻿using AbpVnext.Learn.Encrypt;
+﻿using AbpVnext.Learn.Dtos.login;
+using AbpVnext.Learn.Encrypt;
 using AbpVnext.Learn.IAppServices;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -24,21 +25,28 @@ namespace AbpVnext.Learn.Controller
             _configuration = configuration;
         }
         #region 折叠
-        
+        /// <summary>
+        /// 登出接口
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         [Route("logout")]
-        //退出登录
+        [Authorize]
         public async Task<int> Logout()
         {
-            int ssss = int.Parse("aaaaa");
             return 0;
         }
+        /// <summary>
+        /// 用户登录接口，入参：LoginDto，出参LoginOutputDto
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("login")]
-        public async Task<ResultModel> Login(string user_phone,string pass_word)
+        public async Task<ResultModel<LoginOutputDto>> Login([FromBody]LoginDto dto)
         {
-            pass_word = BaseEncrypt.MD5Encrypt(pass_word);
-            var user = await _userAppServices.LoginByUserPhoneAndPwd(user_phone, pass_word);
+            dto.pass_word = BaseEncrypt.MD5Encrypt(dto.pass_word);
+            var user = await _userAppServices.LoginByUserPhoneAndPwd(dto.user_phone, dto.pass_word);
             var claims = new List<Claim>();
             claims.Add(new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()));
             var dtCreation = DateTime.Now;
@@ -48,7 +56,7 @@ namespace AbpVnext.Learn.Controller
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
             var handler = new JwtSecurityTokenHandler();
             var securityToken = new JwtSecurityToken(_configuration.GetValue<string>("JwtAuth:Issuer"), _configuration.GetValue<string>("JwtAuth:Audience"), claims, dtCreation, dtExpiration, credentials);          
-            return new ResultModel(0,"",new { token = handler.WriteToken(securityToken) });
+            return new ResultModel<LoginOutputDto>(0,"",new LoginOutputDto(){ token = handler.WriteToken(securityToken) });
         }
 
         #endregion

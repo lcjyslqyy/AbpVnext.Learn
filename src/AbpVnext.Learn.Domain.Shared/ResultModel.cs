@@ -4,9 +4,9 @@ using System.Text;
 
 namespace AbpVnext.Learn
 {
-    public class ResultModel
+    public class ResultModel<T>
     {
-        public ResultModel(int _code,string _msg,object _data)
+        public ResultModel(int _code,string _msg,T _data)
         {
             code = _code;
             msg = _msg;
@@ -17,6 +17,6 @@ namespace AbpVnext.Learn
         /// </summary>
         public int code  { get; set; }
         public string msg { get; set; }
-        public object data { get; set; }
+        public T data { get; set; }
     }
 }

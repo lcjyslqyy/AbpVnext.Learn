@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# CS1587: XML 注释没有放在有效语言元素上
+dotnet_diagnostic.CS1587.severity = none

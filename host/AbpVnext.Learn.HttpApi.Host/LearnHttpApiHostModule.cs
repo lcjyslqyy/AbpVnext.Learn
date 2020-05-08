@@ -72,8 +72,36 @@ namespace AbpVnext.Learn
                 options =>
                 {
                     options.SwaggerDoc("v1", new OpenApiInfo { Title = "Learn API", Version = "v1" });
-                    options.DocInclusionPredicate((docName, description) => true);
-                    options.CustomSchemaIds(type => type.FullName);
+                    options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                    {
+                        Description = "JWT授权(数据将在请求头中进行传输) 直接在下框中输入Bearer {token}（注意两者之间是一个空格）\"",
+                        Name = "Authorization",//jwt默认的参数名称
+                        In = ParameterLocation.Header,//jwt默认存放Authorization信息的位置(请求头中)
+                        Type = SecuritySchemeType.ApiKey
+                    });
+                    options.AddSecurityRequirement(new OpenApiSecurityRequirement
+                    {
+                        { new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference()
+                            {
+                                Id = "Bearer",
+                                Type = ReferenceType.SecurityScheme
+                            }
+                        }, Array.Empty<string>() }
+                    });
+                    var xmlapipath = Path.Combine(AppContext.BaseDirectory, "AbpVnext.Learn.HttpApi.xml");
+                    if (File.Exists(xmlapipath))
+                    {
+                        options.IncludeXmlComments(xmlapipath);
+                    }
+                    var xmlapppath = Path.Combine(AppContext.BaseDirectory, "AbpVnext.Learn.Application.Contracts.xml");
+                    if (File.Exists(xmlapipath))
+                    {
+                        options.IncludeXmlComments(xmlapppath);
+                    }
+
+
                 });
 
             Configure<AbpLocalizationOptions>(options =>

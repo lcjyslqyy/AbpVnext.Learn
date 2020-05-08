@@ -28,7 +28,7 @@ namespace AbpVnext.Learn.AppServices
             var usermodel = await _repository.get_userinfo(userid);
             if (usermodel != null)
             {
-                return new UserDto() {user_name=usermodel.user_name,user_phone=usermodel.user_phone };
+                return new UserDto() {Id=usermodel.Id, user_status=usermodel.user_status, user_name=usermodel.user_name,user_phone=usermodel.user_phone };
             }
            return null;
         }

@@ -1,5 +1,6 @@
 ﻿using AbpVnext.Learn.Dtos.user;
 using AbpVnext.Learn.IAppServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,18 @@ namespace AbpVnext.Learn.Controller.user
         {
             _userAppServices = userAppServices;
         }
-       
+        /// <summary>
+        /// 获取用户信息，出参UserDto，入参无
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [Route("init")]
+        [Authorize]
+        public async Task<ResultModel<UserDto>> Init()
+        {
+            var user =await _userAppServices.get_userbyuserid(new Guid(userid));
+            return new ResultModel<UserDto>(200, "", user);
+        }
     }
 }

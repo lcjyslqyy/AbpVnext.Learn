@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AbpVnext.Learn.Application.Contracts</name>
+    </assembly>
+    <members>
+        <member name="T:AbpVnext.Learn.Dtos.login.LoginDto">
+            <summary>
+            登录的Dto
+            </summary>
+        </member>
+        <member name="P:AbpVnext.Learn.Dtos.login.LoginDto.user_phone">
+            <summary>
+            用户手机号
+            </summary>
+        </member>
+        <member name="P:AbpVnext.Learn.Dtos.login.LoginDto.pass_word">
+            <summary>
+            登录密码
+            </summary>
+        </member>
+        <member name="T:AbpVnext.Learn.Dtos.login.LoginOutputDto">
+            <summary>
+            登录接口出参dto
+            </summary>
+        </member>
+        <member name="P:AbpVnext.Learn.Dtos.login.LoginOutputDto.token">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="T:AbpVnext.Learn.Dtos.user.GetUserDto">
+            <summary>
+            获取用户信息的dto
+            </summary>
+        </member>
+        <member name="P:AbpVnext.Learn.Dtos.user.GetUserDto.userid">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="T:AbpVnext.Learn.Dtos.user.UserDto">
+            <summary>
+            输出用户信息的Dto
+            </summary>
+        </member>
+        <member name="P:AbpVnext.Learn.Dtos.user.UserDto.user_name">
+            <summary>
+            用户名称
+            </summary>
+        </member>
+        <member name="P:AbpVnext.Learn.Dtos.user.UserDto.user_phone">
+            <summary>
+            用户手机号
+            </summary>
+        </member>
+        <member name="P:AbpVnext.Learn.Dtos.user.UserDto.user_status">
+            <summary>
+            用户状态
+            </summary>
+        </member>
+        <member name="M:AbpVnext.Learn.IAppServices.IUserAppServices.LoginByUserPhoneAndPwd(System.String,System.String)">
+            <summary>
+            登录接口
+            </summary>
+            <param name="user_phone"></param>
+            <param name="pass_word"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AbpVnext.Learn.IAppServices.IUserAppServices.get_userbyuserid(System.Guid)">
+            <summary>
+            获取用户信息
+            </summary>
+            <param name="userid"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

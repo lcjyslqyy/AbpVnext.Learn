@@ -5,6 +5,9 @@ using Volo.Abp.Application.Dtos;
 
 namespace AbpVnext.Learn.Dtos.user
 {
+    /// <summary>
+    /// 输出用户信息的Dto
+    /// </summary>
     public class UserDto: EntityDto<Guid>
     {
         /// <summary>

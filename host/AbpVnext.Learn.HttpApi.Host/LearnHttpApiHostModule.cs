@@ -152,6 +152,7 @@ namespace AbpVnext.Learn
                 if (index > -1)
                     options.Filters.RemoveAt(index);
                 options.Filters.Add(typeof(LeanGlobalExceptionFilter));
+                options.ModelBindingMessageProvider.SetValueMustNotBeNullAccessor(_ => "缺少必要参数。");
             });
         }
 

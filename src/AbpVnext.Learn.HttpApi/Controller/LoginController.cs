@@ -47,6 +47,10 @@ namespace AbpVnext.Learn.Controller
         {
             dto.pass_word = BaseEncrypt.MD5Encrypt(dto.pass_word);
             var user = await _userAppServices.LoginByUserPhoneAndPwd(dto.user_phone, dto.pass_word);
+            if (user == null)
+            {
+                return new ResultModel<LoginOutputDto>(-1, "账号或密码错误，请重新输入",null);
+            }
             var claims = new List<Claim>();
             claims.Add(new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()));
             var dtCreation = DateTime.Now;

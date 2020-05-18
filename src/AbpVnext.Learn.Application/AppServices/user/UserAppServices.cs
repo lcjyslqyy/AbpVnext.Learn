@@ -20,7 +20,7 @@ namespace AbpVnext.Learn.AppServices
         }
         public async Task<UserDto> LoginByUserPhoneAndPwd(string user_phone,string pass_word)
         {
-            var user= await _repository.GetAsync(a=>a.user_phone== user_phone&&a.pass_word== pass_word&&a.user_status==0);
+            var user= await _repository.FindAsync(a=>a.user_phone== user_phone&&a.pass_word== pass_word&&a.user_status==0);
             return ObjectMapper.Map<User, UserDto>(user);
         }
         public async Task<UserDto> get_userbyuserid(Guid userid)

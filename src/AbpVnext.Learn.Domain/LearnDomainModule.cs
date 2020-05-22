@@ -1,4 +1,5 @@
-﻿using Volo.Abp.Modularity;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Volo.Abp.Modularity;
 
 namespace AbpVnext.Learn
 {
@@ -7,6 +8,13 @@ namespace AbpVnext.Learn
         )]
     public class LearnDomainModule : AbpModule
     {
-
+        public override void ConfigureServices(ServiceConfigurationContext context)
+        {
+            var configuration = context.Services.GetConfiguration();
+            context.Services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = configuration["Redis:Configuration"];
+            });
+        }
     }
 }

@@ -8,7 +8,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using AbpVnext.Learn.EntityFrameworkCore;
 using AbpVnext.Learn.MultiTenancy;
-using StackExchange.Redis;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Swagger;
 using Volo.Abp;
@@ -119,13 +118,7 @@ namespace AbpVnext.Learn
             //    options.Configuration = configuration["Redis:Configuration"];
             //});
 
-            if (!hostingEnvironment.IsDevelopment())
-            {
-                var redis = ConnectionMultiplexer.Connect(configuration["Redis:Configuration"]);
-                context.Services
-                    .AddDataProtection()
-                    .PersistKeysToStackExchangeRedis(redis, "Learn-Protection-Keys");
-            }
+           
 
             context.Services.AddCors(options =>
             {

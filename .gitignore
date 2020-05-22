@@ -258,3 +258,5 @@ host/AbpVnext.Learn.Web.Host/Logs/logs.txt
 host/AbpVnext.Learn.Web.Unified/Logs/logs.txt
 /src/AbpVnext.Learn.HttpApi/AbpVnext.Learn.HttpApi.xml
 *.json
+/src/AbpVnext.Learn.EntityFrameworkCore.DbMigrations/appsettings.json
+/host/AbpVnext.Learn.HttpApi.Host/appsettings.json

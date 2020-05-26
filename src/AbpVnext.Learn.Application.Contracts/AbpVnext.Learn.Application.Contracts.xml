@@ -29,6 +29,11 @@
             token
             </summary>
         </member>
+        <member name="T:AbpVnext.Learn.Dtos.OpenApiAuthDto">
+            <summary>
+            对外授权的接口模型
+            </summary>
+        </member>
         <member name="T:AbpVnext.Learn.Dtos.user.GetUserDto">
             <summary>
             获取用户信息的dto

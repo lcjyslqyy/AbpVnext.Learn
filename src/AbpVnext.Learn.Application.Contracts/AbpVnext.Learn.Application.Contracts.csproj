@@ -12,6 +12,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="IAppServices\openapi\**" />
+    <EmbeddedResource Remove="IAppServices\openapi\**" />
+    <None Remove="IAppServices\openapi\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Volo.Abp.Ddd.Application.Contracts" Version="2.5.0" />
     <PackageReference Include="Volo.Abp.Authorization" Version="2.5.0" />
     <ProjectReference Include="..\AbpVnext.Learn.Domain.Shared\AbpVnext.Learn.Domain.Shared.csproj" />

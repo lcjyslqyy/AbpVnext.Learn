@@ -54,7 +54,7 @@ namespace AbpVnext.Learn.Controller
             var claims = new List<Claim>();
             claims.Add(new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()));
             var dtCreation = DateTime.Now;
-            int sss = _configuration.GetValue<int>("JwtAuth:TokenTime");
+            //Audience
             var dtExpiration = dtCreation + TimeSpan.FromHours(_configuration.GetValue<int>("JwtAuth:TokenTime"));
             var key = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(_configuration.GetValue<string>("JwtAuth:SecurityKey")));
             var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);

@@ -1,5 +1,9 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using AbpVnext.Learn.IHttpClient;
+using Microsoft.Extensions.DependencyInjection;
+using StackExchange.Redis;
 using Volo.Abp.Modularity;
+using Refit;
+using System;
 
 namespace AbpVnext.Learn
 {
@@ -15,6 +19,7 @@ namespace AbpVnext.Learn
             {
                 options.Configuration = configuration["Redis:Configuration"];
             });
+            context.Services.AddRefitClient<IWechatApi>().ConfigureHttpClient(c => c.BaseAddress = new Uri("https://api.weixin.qq.com"));
         }
     }
 }

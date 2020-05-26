@@ -13,7 +13,10 @@
 
   <ItemGroup>
     <EmbeddedResource Include="Localization\Learn\*.json" />
+    <Compile Remove="HttpClientModel\InnerApiModel\**" />
     <Content Remove="Localization\Learn\*.json" />
+    <EmbeddedResource Remove="HttpClientModel\InnerApiModel\**" />
+    <None Remove="HttpClientModel\InnerApiModel\**" />
   </ItemGroup>
 
 </Project>

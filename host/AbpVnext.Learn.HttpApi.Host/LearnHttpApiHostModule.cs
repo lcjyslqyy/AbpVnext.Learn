@@ -30,6 +30,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Mvc;
 using Volo.Abp.AspNetCore.Mvc.ExceptionHandling;
 using AbpVnext.Learn.Base.Filters;
+using Refit;
+using AbpVnext.Learn.IHttpClient;
 
 namespace AbpVnext.Learn
 {
@@ -111,14 +113,14 @@ namespace AbpVnext.Learn
 
 
 
-                
-            // Redis暂时注释
-            //context.Services.AddStackExchangeRedisCache(options =>
-            //{
-            //    options.Configuration = configuration["Redis:Configuration"];
-            //});
 
-           
+            context.Services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = configuration["Redis:Configuration"];
+            });
+            context.Services.AddRefitClient<IWechatApi>().ConfigureHttpClient(c => c.BaseAddress = new Uri("https://api.weixin.qq.com"));
+
+
 
             context.Services.AddCors(options =>
             {

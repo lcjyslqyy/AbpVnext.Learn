@@ -15,11 +15,6 @@ namespace AbpVnext.Learn
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
             var configuration = context.Services.GetConfiguration();
-            context.Services.AddStackExchangeRedisCache(options =>
-            {
-                options.Configuration = configuration["Redis:Configuration"];
-            });
-            context.Services.AddRefitClient<IWechatApi>().ConfigureHttpClient(c => c.BaseAddress = new Uri("https://api.weixin.qq.com"));
-        }
+       }
     }
 }
